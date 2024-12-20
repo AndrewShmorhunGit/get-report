@@ -17,7 +17,7 @@ jobs:
       - name: Set up pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 8 # Specify the desired version of pnpm
+          version: 8
 
       - name: Install dependencies
         run: pnpm install
@@ -26,6 +26,9 @@ jobs:
         run: pnpm run test:ci
 
       - name: Build Website
+        env:
+          VITE_AUTH_API_URL: ${{ secrets.VITE_AUTH_API_URL }}
+          VITE_BASE_API_URL: ${{ secrets.VITE_BASE_API_URL }}
         run: pnpm run build:dev
 
       - name: Configure AWS credentials
