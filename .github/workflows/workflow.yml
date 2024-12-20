@@ -27,8 +27,8 @@ jobs:
 
       - name: Build Website
         env:
-          VITE_AUTH_API_URL: ${{ secrets.VITE_AUTH_API_URL }}
-          VITE_BASE_API_URL: ${{ secrets.VITE_BASE_API_URL }}
+          VITE_AUTH_API_URL: ${{ vars.VITE_AUTH_API_URL }}
+          VITE_BASE_API_URL: ${{ vars.VITE_BASE_API_URL }}
         run: pnpm run build:dev
 
       - name: Configure AWS credentials
